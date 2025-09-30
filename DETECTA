@@ -1,0 +1,45 @@
+import pandas as pd
+from tkinter import Tk, filedialog, simpledialog, messagebox
+
+# Oculta la ventana principal de Tkinter
+root = Tk()
+root.withdraw()
+
+# Selecciona el archivo Excel
+file_path = filedialog.askopenfilename(
+    title="Selecciona el archivo Excel",
+    filetypes=[("Archivos Excel", "*.xlsx *.xls")]
+)
+if not file_path:
+    print("No se seleccionó archivo.")
+    exit()
+
+# Pide el carácter a buscar
+char_to_find = simpledialog.askstring("Buscar carácter", "¿Qué carácter deseas buscar?")
+if not char_to_find or len(char_to_find) != 1:
+    messagebox.showerror("Error", "Debes ingresar un solo carácter.")
+    exit()
+
+# Lee el Excel
+df = pd.read_excel(file_path, dtype=str)
+df = df.fillna("")
+
+resultados = []
+for row_idx, row in df.iterrows():
+    for col_idx, value in enumerate(row):
+        if char_to_find in str(value):
+            col_letter = df.columns[col_idx]
+            resultados.append(f"Fila {row_idx+2}, Columna '{col_letter}': {value}")
+
+# Muestra resultados en pantalla
+if resultados:
+    resumen = "\n".join(resultados)
+    messagebox.showinfo("Resultados", f"Se encontró el carácter '{char_to_find}' en:\n\n{resumen}")
+    # Guarda en TXT
+    with open("resumen_busqueda.txt", "w", encoding="utf-8") as f:
+        f.write(f"Resultados de búsqueda para '{char_to_find}':\n\n")
+        f.write(resumen)
+    print("Resumen guardado en resumen_busqueda.txt")
+else:
+    messagebox.showinfo("Resultados", f"No se encontró el carácter '{char_to_find}' en el archivo.")
+    print("No se encontró el carácter en el archivo.")

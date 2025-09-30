@@ -1,0 +1,99 @@
+<html><head><script language="JavaScript" src="java/general.js">
+</script>
+<script language="JavaScript">
+function busquedaedocta(form)
+{
+
+
+  fecha= form.DIA1.value +"/"+ document.FORM1.MES1.value +"/"+ document.FORM1.ANIO1.value;
+  VALDIA =form.DIA1.value ;
+  VALMES =form.MES1.value;
+  VALANIO=form.ANIO1.value;
+  OBJ1 =form.DIA1 ;
+  OBJ2 =form.MES1;
+  OBJ3 =form.ANIO1;
+
+    var VALIDAR1=VALIDARFECHA(OBJ1,OBJ2,OBJ3,VALDIA, VALMES, VALANIO,fecha);
+
+    if (VALIDAR1!=true ) {
+  }
+  else  {
+             return ;
+    }
+  fecha  =document.FORM1.DIA2.value +"/"+ document.FORM1.MES2.value +"/"+ document.FORM1.ANIO2.value;
+  VALDIA =document.FORM1.DIA2.value ;
+  VALMES =document.FORM1.MES2.value;
+  VALANIO=document.FORM1.ANIO2.value;
+  OBJ1 =document.FORM1.DIA2 ;
+  OBJ2 =document.FORM1.MES2;
+  OBJ3 =document.FORM1.ANIO2;
+
+    var VALIDAR2=VALIDARFECHA(OBJ1,OBJ2,OBJ3,VALDIA, VALMES, VALANIO,fecha);
+    if (VALIDAR2!=true ) {
+  }
+  else  {
+             return ;
+    }
+
+    if (VALIDAR1!=true && VALIDAR2!=true) {
+     document.FORM1.action="CARDEXPRODUCTO2.PHP?swa=2bd3cf984652b02e220433a3b701dccf";
+     document.FORM1.submit();
+  }
+}
+
+
+
+</script>
+
+<script language="JavaScript">
+<!--
+
+ns=document.layers
+ie=document.all
+
+function oculta() {
+if (ie) precarga.style.visibility="hidden";
+if(ns) document.pregarga.visibility="hide";
+}
+// -->
+</script>
+
+<script language="JavaScript">
+if(ie || ns) 
+document.write('<div id="precarga" align="center" style="position:absolute;left:50%;top:50%;visibility:visible"><img src="cargando.gif" border="0"> </div>');
+</script>
+
+
+
+
+<title>Documento sin título</title>
+<link href="estilos/Style.css" type="text/css" rel="stylesheet">
+<link href="estilos/davicocss.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="oculta();">
+<form method="post" name="FORM1" id="FORM1" enctype="multipart/form-data">
+<br>
+<center>
+<table cellspacing="0" cellpadding="0" border="0" class="solido">
+<tbody><tr><td> CARDEX </td></tr>
+   <tr>
+<th valign="top">
+
+
+
+
+
+<table class="Record" cellspacing="0" cellpadding="0"><input type="HIDDEN" name="inicia" value="1">  <tbody><tr class="Caption"><td colspan="2">PERIODO DE CONSULTA</td><td colspan="2"></td></tr><tr class="Controls"><th>Peri�do de Consulta </th><td>D�a<input type="TEXT" name="DIA1" width="2" size="2" value="13" maxlength="2" onfocus="this.select();" onblur="validasolonum(this,this.value,'13');">&nbsp;/&nbsp;Mes<input type="TEXT" name="MES1" width="2" size="2" value="02" maxlength="2" onfocus="this.select();" onblur="validasolonum(this,this.value,'02');">&nbsp;/&nbsp;A�o<input type="TEXT" name="ANIO1" width="4" size="4" value="2025" maxlength="4" onfocus="this.select();" onblur="validasolonum(this,this.value,'2025');"></td><td> -------&gt;    </td><td>Dia<input type="TEXT" name="DIA2" width="2" size="2" value="13" maxlength="2" onfocus="this.select();" onblur="validasolonum(this,this.value,'13');">&nbsp;/&nbsp;Mes<input type="TEXT" name="MES2" width="2" size="2" value="02" maxlength="2" onfocus="this.select();" onblur="validasolonum(this,this.value,'02');">&nbsp;/&nbsp;A�o<input type="TEXT" name="ANIO2" width="4" size="4" value="2025" maxlength="4" onfocus="this.select();" onblur="validasolonum(this,this.value,'2025');"></td></tr><tr class="Controls"><th>Filtrar por </th><td colspan="3">
+<input type="radio" name="tipo_p" value="0">Todos
+<br><input type="radio" name="tipo_p" value="1">Productos en 0
+<br><input type="radio" name="tipo_p" value="2" checked="">Productos con existencia &lt;&gt; 0
+<br><input type="radio" name="tipo_p" value="3">Productos con existencia &lt; 0
+<br><input type="radio" name="tipo_p" value="4">Productos con existencia &gt; 0
+</td></tr><tr class="Controls"><th>Clave Artesano</th><td colspan="3"><input type="TEXT" maxlength="60" size="30" name="CVEART" class="tarea3"></td></tr><tr class="Controls"><th>Clave del Producto</th><td colspan="3"><input type="TEXT" maxlength="60" size="30" name="CVEPROD" class="tarea3"></td></tr><tr class="Controls"><th>Sucursal</th><td colspan="3">1--&gt;<br><select name="sucursal" size="1"><option value="" class="dos">----------</option> <option value="001" selected="" class="uno">TIENDA CASART</option> <option value="002" class="dos">TIENDA ITINERANTE TABASCO 2023</option> <option value="003" class="uno">CASART AEROPUERTO</option> <option value="012" class="dos">IXTAPAN DE LA SAL</option> <option value="TENANCINGO" class="uno">CASART TENANCINGO</option> <option value="010" class="dos">MUSEO LAS TORRES BICENTENARIO</option> <option value="063" class="uno">ATLACOMULCO</option> <option value="CASART TEX" class="dos">TIENDA ARTESANOS CASART TEXCOCO CCMB</option> <option value="72" class="uno">TIENDA DE ARTESANíAS MUSEO ANTROPOLOGíA (TOLUCA)</option> <option value="74" class="dos">TEINDA MERCADO LIBRE</option> <option value="75" class="uno">TIENDA AMAZON</option> <option value="76" class="dos">TIENDA DE ARTESANÍAS CASART, PLAZA FUNDADORES, TOLUCA.</option> <option value="ALMCONCU" class="uno">ALMACÉN PARA CONCURSOS</option> <option value="1234567890" class="dos">TIENDA DE ARTESANIAS CASART. PUNTO MEXICO CDMX.</option> <option value="78" class="uno">TIENDA DE ARTESANIAS CASART CASA DEL CONSTITUYENTE TEXCOCO</option> <option value="79" class="dos">TIENDA EVENTOS ESPECIALES 2023</option> <option value="80" class="uno">ALAMACEN ENVOLTURAS 50000</option> <option value="81" class="dos">CASART CENTRO REGIONAL CHALCO</option> <option value="82" class="uno">TIENDA CASART FUNDADORES GOURMET</option> <option value="83" class="dos">TIENDA CASART FUNDADORES BOUTIQUE</option> <option value="84" class="uno">TIENDA DE ARTESANÍAS CASART SAN MARTÍN DE LA PÍRAMIDES</option> <option value="85" class="dos">CASART EL ORO</option> <option value="86" class="uno">TIENDA DE ARTESANÍAS CASART NEZAHUALCÓYOTL</option> <option value="55900" class="dos">TIENDA DE ARTESANÍAS CASART MUSEO GONZALO CARRASCO</option> <option value="88" class="uno">TIENDA DE ARTESANÍAS CASART ZOOLÓGICO DE ZACANGO</option> <option value="89" class="dos">TIENDA EVENTOS ESPECIALES 02 DE AGOSTO 2024.</option> </select> </td></tr><tr class="caption"><th align="right" colspan="4"><div align="right"><input type="BUTTON" class="botoncito" value="Buscar" border="0" onclick="busquedaedocta(this.form)"><img src="imagenes/busqueda_2.gif"> &nbsp;<br><br></div></th> </tr></tbody></table> 
+ 
+</th></tr>
+</tbody></table>	    
+
+
+
+</center></form></body></html>

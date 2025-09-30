@@ -1,0 +1,26 @@
+import chardet
+from tkinter import filedialog, Tk
+
+# Ocultar ventana principal
+root = Tk()
+root.withdraw()
+
+# Seleccionar archivo
+file_path = filedialog.askopenfilename(
+    title="Selecciona el archivo TXT",
+    filetypes=[("Text files", "*.txt")]
+)
+
+if not file_path:
+    print("No se seleccionó ningún archivo.")
+    exit()
+
+# Leer el archivo en modo binario y detectar codificación
+with open(file_path, 'rb') as f:
+    raw_data = f.read()
+    result = chardet.detect(raw_data)
+
+# Mostrar resultado
+print(f"Archivo: {file_path}")
+print("Resultado de detección de codificación:")
+print(result)
